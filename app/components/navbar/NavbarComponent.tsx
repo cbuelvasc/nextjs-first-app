@@ -25,7 +25,6 @@ export const NavbarComponent = ({ navItems }: NavbarProps) => {
     <Navbar isBordered className='shadow-md'>
       <NavbarContent justify='start'>
         <NavbarBrand className='mr-4'>
-          {/* <AcmeLogo /> */}
           <FcEngineering className='mr-2 size-10'/>
           <p className='hidden font-bold text-inherit sm:block'>
             <Link color='foreground' href='/'>
