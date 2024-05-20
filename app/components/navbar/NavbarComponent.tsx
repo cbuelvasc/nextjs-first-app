@@ -6,12 +6,19 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Input,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
 } from '@nextui-org/react';
+import Link from 'next/link';
+import { ActiveLink } from '../';
+
+const navItems = [
+  { path: '/about', label: 'About' },
+  { path: '/pricing', label: 'Pricing' },
+  { path: '/contact', label: 'Contact' },
+];
 
 export const NavbarComponent = () => {
   return (
@@ -19,24 +26,20 @@ export const NavbarComponent = () => {
       <NavbarContent justify='start'>
         <NavbarBrand className='mr-4'>
           {/* <AcmeLogo /> */}
-          <p className='hidden font-bold text-inherit sm:block'>ACME</p>
+          <p className='hidden font-bold text-inherit sm:block'>
+            <Link color='foreground' href='/'>
+              ACME
+            </Link>
+          </p>
         </NavbarBrand>
         <NavbarContent className='hidden gap-3 sm:flex'>
-          <NavbarItem>
-            <Link color='foreground' href='about'>
-              About
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link href='pricing' aria-current='page' color='primary'>
-              Pricing
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href='contact' color='foreground'>
-              Contact
-            </Link>
-          </NavbarItem>
+          
+          {navItems.map((item) => (
+            <NavbarItem key={item.path}>
+              <ActiveLink key={item.path} path={item.path} label={item.label} />
+            </NavbarItem>
+          ))}
+
         </NavbarContent>
       </NavbarContent>
 
@@ -67,17 +70,33 @@ export const NavbarComponent = () => {
             />
           </DropdownTrigger>
           <DropdownMenu aria-label='Profile Actions' variant='flat'>
-            <DropdownItem className="text-foreground h-14 gap-2" key='profile'>
+            <DropdownItem className='h-14 gap-2 text-foreground' key='profile'>
               <p className='font-semibold'>Signed in as</p>
               <p className='font-semibold'>zoey@example.com</p>
             </DropdownItem>
-            <DropdownItem className="text-foreground" key='settings'>My Settings</DropdownItem>
-            <DropdownItem className="text-foreground" key='team_settings'>Team Settings</DropdownItem>
-            <DropdownItem className="text-foreground" key='analytics'>Analytics</DropdownItem>
-            <DropdownItem className="text-foreground" key='system'>System</DropdownItem>
-            <DropdownItem className="text-foreground" key='configurations'>Configurations</DropdownItem>
-            <DropdownItem className="text-foreground" key='help_and_feedback'>Help & Feedback</DropdownItem>
-            <DropdownItem className="text-foreground" key='logout' color='danger'>
+            <DropdownItem className='text-foreground' key='settings'>
+              My Settings
+            </DropdownItem>
+            <DropdownItem className='text-foreground' key='team_settings'>
+              Team Settings
+            </DropdownItem>
+            <DropdownItem className='text-foreground' key='analytics'>
+              Analytics
+            </DropdownItem>
+            <DropdownItem className='text-foreground' key='system'>
+              System
+            </DropdownItem>
+            <DropdownItem className='text-foreground' key='configurations'>
+              Configurations
+            </DropdownItem>
+            <DropdownItem className='text-foreground' key='help_and_feedback'>
+              Help & Feedback
+            </DropdownItem>
+            <DropdownItem
+              className='text-foreground'
+              key='logout'
+              color='danger'
+            >
               Log Out
             </DropdownItem>
           </DropdownMenu>

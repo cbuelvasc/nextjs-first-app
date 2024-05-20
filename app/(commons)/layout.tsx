@@ -1,6 +1,3 @@
-import { NavbarComponent } from '../components/NavbarComponent';
-import { Providers } from '../providers';
-
 export default function CommonLayout({
   children,
 }: {
@@ -8,12 +5,9 @@ export default function CommonLayout({
 }) {
   return (
     <>
-      <Providers>
-        <NavbarComponent />
-        <main className='flex flex-col items-center py-10 px-24 pt-10'>
-          {children}
-        </main>
-      </Providers>
+      <main className='flex flex-col items-center px-24 py-10 pt-10'>
+        {children}
+      </main>
     </>
   );
 }
