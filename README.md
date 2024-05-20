@@ -1,4 +1,4 @@
-# First Next.js App
+# Next.js - First App
 
 First, run the development server:
 
