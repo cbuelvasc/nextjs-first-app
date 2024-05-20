@@ -9,7 +9,7 @@ interface ActiveLinkProps {
   label: string;
 }
 
-export const ActiveLink = ({ path, label }: ActiveLinkProps) => {
+export const ActiveLinkComponent = ({ path, label }: ActiveLinkProps) => {
   const pathName = usePathname();
   return (
     <Link

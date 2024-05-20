@@ -12,34 +12,37 @@ import {
   NavbarItem,
 } from '@nextui-org/react';
 import Link from 'next/link';
-import { ActiveLink } from '../';
+import { FcEngineering, FcSearch, FcBusinessman } from "react-icons/fc";
 
-const navItems = [
-  { path: '/about', label: 'About' },
-  { path: '/pricing', label: 'Pricing' },
-  { path: '/contact', label: 'Contact' },
-];
+import { ActiveLinkComponent } from '../';
 
-export const NavbarComponent = () => {
+interface NavbarProps {
+  navItems: { path: string; label: string }[];
+}
+
+export const NavbarComponent = ({ navItems }: NavbarProps) => {
   return (
-    <Navbar isBordered>
+    <Navbar isBordered className='shadow-md'>
       <NavbarContent justify='start'>
         <NavbarBrand className='mr-4'>
           {/* <AcmeLogo /> */}
+          <FcEngineering className='mr-2 size-10'/>
           <p className='hidden font-bold text-inherit sm:block'>
             <Link color='foreground' href='/'>
-              ACME
+              App
             </Link>
           </p>
         </NavbarBrand>
         <NavbarContent className='hidden gap-3 sm:flex'>
-          
           {navItems.map((item) => (
             <NavbarItem key={item.path}>
-              <ActiveLink key={item.path} path={item.path} label={item.label} />
+              <ActiveLinkComponent
+                key={item.path}
+                path={item.path}
+                label={item.label}
+              />
             </NavbarItem>
           ))}
-
         </NavbarContent>
       </NavbarContent>
 
@@ -54,7 +57,7 @@ export const NavbarComponent = () => {
           }}
           placeholder='Type to search...'
           size='sm'
-          startContent='search'
+          startContent={<FcSearch />}
           type='search'
         />
         <Dropdown placement='bottom-end'>
@@ -62,11 +65,12 @@ export const NavbarComponent = () => {
             <Avatar
               isBordered
               as='button'
-              className='transition-transform'
+              className='transition-transform bg-gradient-to-br from-[#FFB457] to-[#FF705B]'
               color='secondary'
               name='Jason Hughes'
-              size='sm'
-              src='https://i.pravatar.cc/150?u=a042581f4e29026704d'
+              size='md'
+              fallback={<FcBusinessman className='size-10'/>}
+              //src='https://i.pravatar.cc/150?u=a042581f4e29026704d'
             />
           </DropdownTrigger>
           <DropdownMenu aria-label='Profile Actions' variant='flat'>
